@@ -16,7 +16,7 @@ public class PurchaseAmount {
 
 
     public Integer getNumberOfLotto() {
-        return purchaseAmount /= PURCHASE_UNIT.get();
+        return purchaseAmount / PURCHASE_UNIT.get();
     }
 
     private void validatePurchaseAmount(Integer purchaseAmount) {
