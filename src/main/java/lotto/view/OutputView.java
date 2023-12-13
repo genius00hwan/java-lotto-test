@@ -4,6 +4,7 @@ import static lotto.config.Messages.BONUS_BALL;
 import static lotto.config.Messages.PROFIT_RATIO_FORMAT;
 import static lotto.config.Messages.RANK_FORMAT;
 import static lotto.config.Messages.NUMBER_OF_LOTTO_FORMAT;
+import static lotto.config.Messages.RECEIPT_TAIL;
 import static lotto.config.Messages.RECEIPT_TITLE;
 
 
@@ -38,11 +39,15 @@ public class OutputView {
         if (isBonus) {
             bonusString = BONUS_BALL.get();
         }
-        System.out.printf(RANK_FORMAT.get(), numberOfBall, bonusString, prize, numberOfRank);
 
+        System.out.printf(RANK_FORMAT.get(), numberOfBall, bonusString, prize, numberOfRank);
     }
 
     public void printProfitRatio(Double profitRatio) {
         System.out.printf(PROFIT_RATIO_FORMAT.get(), profitRatio);
+        System.out.print(RECEIPT_TAIL.get());
+    }
+    public void printErrorMessage(Exception e){
+        System.out.println(e.getMessage());
     }
 }
