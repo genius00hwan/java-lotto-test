@@ -21,7 +21,7 @@ public class Receipt {
 
     public Double getProfitRatio() {
         Long totalPrize = calculateTotalPrize();
-        return (double) totalPrize / (double) purchaseAmount;
+        return ((double) totalPrize / (double) purchaseAmount) * 100.0;
     }
 
     private Long calculateTotalPrize() {
