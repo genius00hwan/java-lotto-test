@@ -3,11 +3,11 @@ package lotto.config;
 public enum Rank {
 
     FAIL(0, 0, 0, false),
-    FIRST(1, 6, 2000000000, false),
-    SECOND(2, 5, 30000000, true),
-    THIRD(3, 5, 1500000, false),
+    FIFTH(5, 3, 5000, false),
     FOURTH(4, 4, 50000, false),
-    FIFTH(5, 3, 5000, false);
+    THIRD(3, 5, 1500000, false),
+    SECOND(2, 5, 30000000, true),
+    FIRST(1, 6, 2000000000, false);
 
 
     Rank(int rankNumber, int numberOfBalls, int prize, boolean bonus) {
