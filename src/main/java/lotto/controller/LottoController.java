@@ -47,7 +47,8 @@ public class LottoController {
         PurchaseAmount purchaseAmount;
         try {
             purchaseAmount = new PurchaseAmount(inputView.inputPurchaseAmount());
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e);
             purchaseAmount = readPurchaseAmount();
         }
         return purchaseAmount;
@@ -70,7 +71,8 @@ public class LottoController {
             List<Integer> winningNumbers = inputView.inputWinningNumbers();
             Integer bonusNumber = inputView.inputBonusNumber();
             winningLotto = new WinningLotto(winningNumbers, bonusNumber);
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e);
             winningLotto = readWinningLotto();
         }
         return winningLotto;
@@ -83,8 +85,10 @@ public class LottoController {
     private void printResult(Receipt receipt) {
         outputView.printTitle();
         for (Rank rank : Rank.values()) {
-            outputView.printRank(rank.getNumberOfBalls(), rank.getPrize(),
-                    receipt.getNumberOfRank(rank), rank.isBonus());
+            if (rank != Rank.FAIL) {
+                outputView.printRank(rank.getNumberOfBalls(), rank.getPrize(),
+                        receipt.getNumberOfRank(rank), rank.isBonus());
+            }
         }
         outputView.printProfitRatio(receipt.getProfitRatio());
     }
